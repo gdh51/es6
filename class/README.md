@@ -3,7 +3,7 @@
 ## 要点
 
 ### 定义原型方法时不能用'，'否则报错
-```
+`````
 class Potin{
   constructor(x,y){
     this.x=x;
@@ -18,7 +18,7 @@ class Potin{
 
   }
 }
-```
+`````
 ### 定义在Class中的方法不可枚举
 
 ### 若未定义constructor函数，则默认会使用一个空的constructor函数

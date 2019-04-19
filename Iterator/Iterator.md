@@ -60,11 +60,11 @@ var obj={
 + yield*
 + 其他场合
   >由于数组的遍历会调用遍历器接口，所以`任何接受数组作为参数`的场合，其实都调用了遍历器接口。下面是一些例子。
-+ + for...of
-+ + Array.from()
-+ + Map(), Set(), WeakMap(), WeakSet()
-+ + Promise.all()
-+ + Promise.race()
+  + for...of
+  + Array.from()
+  + Map(), Set(), WeakMap(), WeakSet()
+  + Promise.all()
+  + Promise.race()
 
 ### 若要修改字符串上的默认Iterator接口，必须是通过其构造函数创建的字符串对象，否者失效。
 for...of会正确识别32位UTF-16字符

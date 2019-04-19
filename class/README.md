@@ -3,7 +3,7 @@
 ## 要点
 
 ### 定义原型方法时不能用'，'否则报错
-`````
+`````js
 class Potin{
   constructor(x,y){
     this.x=x;

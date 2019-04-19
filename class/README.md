@@ -28,7 +28,7 @@ class Potin{
 ### 存储set、get属性描述符，会存储在该属性的属性描述符Descripter 上
 
 ### Class内部默认为严格模式，所以内部this指向undefined,且Class的定义同let相同，只在定义阶段提升
-```
+```js
 var Point=1;//变量定义提升
   {
     console.log(Point);//error:not defined
@@ -45,7 +45,7 @@ var Point=1;//变量定义提升
   }
 ```
 ### 可以通过直接在Class上定义属性，来在实例中定义属性
-````
+````js
 class Logger {
       _config=1;
 

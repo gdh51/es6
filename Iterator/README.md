@@ -12,7 +12,7 @@
 如果一个数据结构具有`Symbol.iterator`属性，则认为是可遍历的。该属性本身是一个函数，用于生成遍历器。
 
 > 一个简单的部署
-```
+```js
 var obj={
       data:['hello','world'],
       [Symbol.iterator]:function(){
@@ -54,7 +54,7 @@ var obj={
 + 解构赋值
 + 扩展运算符
   >利用这个原理可以将任何数据结构转换为数组
-  ```
+  ```js
   console.log([...obj]);// ["hello", "world"]  引用上面obj对象
   ```
 + yield*
@@ -81,7 +81,7 @@ for...of会正确识别32位UTF-16字符
 + `values()`遍历键值
 
 ### 对象可以使用Generator函数包装一下来使用for...of
-```
+```js
 let obj={
       name:1,
       age:18,

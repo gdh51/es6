@@ -99,3 +99,5 @@ let obj={
       //hobby playgame
     }
 ```
+
+使用for...in遍历时，先遍历出整数属性（integer properties，按照升序），然后其他属性按照创建时候的顺序遍历出来。

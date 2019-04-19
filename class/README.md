@@ -1,4 +1,4 @@
-# ES6 Class
+# Class
 
 ## 要点
 

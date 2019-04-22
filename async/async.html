@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+//     var isToeplitzMatrix = function(matrix) {
+//     let arrLength=matrix.length;
+//     let itemLength=matrix[0].length;
+//     let res=[];
+//     for(let i=0;i<arrLength;i++){
+//         if(i==0){
+//           res.push(map(matrix[i],i));
+//         }else{
+//           res.push(map(matrix[i].slice(0, i), i));
+//         }
+//     }
+//     function map(arr,rowStart){
+//         let res=true;
+//         arr.forEach((item,index)=>{
+//             let colStart=index+1;//列开始的位置
+//             for(let i=rowStart+1;i<arrLength&&colStart< itemLength;){//遍历之后的行
+//                 if(matrix[i++][colStart++]!=item){
+//                  res=false;
+//                 }
+//             }
+//         });
+//         return res;
+//     }
+//    return res.every((item)=>item==true);
+// };
+// function pro () {
+//   return new Promise((re)=>{
+//     setTimeout(() => {
+//       re('done');
+//     }, 2000);
+//   }).then(e=>{
+//     console.log(e);
+//   });
+// }
+// function simAsync(fnG) {
+//   return packingAndrun(fnG);
+//   function packingAndrun(fnG) {
+//     //包装为Promise对象并返回最后一个状态值
+//     return new Promise((resolve, reject) => {
+//       const Gen = fnG();//存储Generator函数
+//       step(() => Gen.next(undefined));
+//       function step(nextF) {
+//         let next;
+//         try {
+//           next = nextF();//yield返回值
+//         } catch (e) {
+//           return reject(e);
+//         }
+//         if (next.done) {
+//           //Generator函数执行完毕，返回return的值
+//           return resolve(next.value);
+//         }
+//         //重复调用step直到yield返回值done为true
+//         Promise.resolve(next.value).then(v => {
+//           step(() => Gen.next(v));
+//         }, e => {
+//           step(() => Gen.throw(e));
+//         });
+//       }
+//     });
+//   }
+// }
+// simAsync(function *() {
+//   yield pro();//done
+//   yield pro();//done
+//   return 'finish';
+// }).then((e)=>{
+//   console.log(e);//finish
+// });//按顺序隔一秒输出done
+[].__proto__[Symbol.asyncIterator]=async function*() {
+  for(let value of this){
+    yield value;
+  }
+}
+// const asyncIterable = ['a', 'b'];
+// const asyncIterator = asyncIterable[Symbol.asyncIterator]();
+// asyncIterator
+//   .next()
+//   .then(iterResult1 => {
+//     console.log(iterResult1); // { value: 'a', done: false }
+//     return asyncIterator.next();
+//   })
+//   .then(iterResult2 => {
+//     console.log(iterResult2); // { value: 'b', done: false }
+//     return asyncIterator.next();
+//   })
+//   .then(iterResult3 => {
+//     console.log(iterResult3); // { value: undefined, done: true }
+//   });
+  var asyncIterable = {
+    [Symbol.asyncIterator]() {
+      return {
+        i: 0,
+        next() {
+          if (this.i < 3) {
+            return Promise.resolve({ value: this.i++, done: false });
+          }
+
+          return Promise.resolve({ done: true });
+        }
+      };
+    }
+  };
+
+  (async function () {
+    for await (let num of asyncIterable) {
+      console.log(num);
+    }
+  })();// 0 1 2
+  </script>
+</body>
+</html>

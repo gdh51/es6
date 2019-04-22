@@ -9,12 +9,18 @@
 <body>
   <script>
     function *gen() {
-      yield setTimeout(function () {
-        f.next();
-      }, 3000);
-      console.log('111');
+      var url = 'https://api.github.com/users/github';
+      var result = yield fetch(url);
+      console.log(result.bio);
     }
     var f=gen();
+    var result = f.next();
+    console.log(result)
+    result.value.then(function(data){
+      return data.json();
+    }).then(function (data) {
+      f.next(data);
+    });
   </script>
 </body>
 </html>

@@ -8,8 +8,8 @@ Generator函数的一种语法糖，将`*`替换为`async`，`yield`替换为`aw
    const asyncFn=async function () {
     await 1;
     await 2;
-  }
-  console.log(asyncFn());//Promise{...}
+   }
+   console.log(asyncFn());//Promise{...}
    ```
 2. 语义明确
 3. 更广泛的适用性

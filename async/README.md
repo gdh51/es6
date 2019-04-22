@@ -33,7 +33,7 @@ async function f() {
 `async`函数返回的`Promise`对象，必须等到内部所有`await`命令后面的`Promise`对象执行完，才会发生状态改变，除非遇到`return`语句或者抛出错误。即`async`函数体内所有异步操作执行完后，才会执行`then`里面的回调函数
 
 ## await
-*正常情况*下，await后跟一个Promise对象，返回该对象的结果。如果不是Promise对象，就直接返回对应的值。
+*正常情况*下，`await`后跟一个Promise对象，返回该对象的结果。如果不是Promise对象，就直接返回对应的值。
 ```js
 async function f() {
  return await 1;
@@ -42,7 +42,7 @@ f().then(function (e) {
   console.log(e);//1
 });
 ```
-*特殊情况*,await后跟一个定义了then方法的对象，则await会将其等同于Promise对象
+*特殊情况*,`await`后跟一个定义了`then`方法的对象，则`await`会将其等同于Promise对象
 ```js
 class Sleep {
   constructor(timeout) {
@@ -144,9 +144,9 @@ simAsync(function *() {
 ## 异步遍历器(asyncIterator)
 
 ### 特点：每次调用next()返回Promise对象
-这个对象状态变为resolve后，之后调用的then()的回调函数参数为一个具有value与done属性的对象(跟遍历器对象返回值一样)
+这个对象状态变为`resolve`后，之后调用的`then()`的回调函数参数为一个具有value与done属性的对象(跟遍历器对象返回值一样)
 
-一个对象的同步遍历器接口在Symbol.iterator属性上，异步遍历器接口在Symbol.asyncIterator上，如果定义该属性就表示对其进行异步遍历。
+一个对象的同步遍历器接口在`Symbol.iterator`属性上，异步遍历器接口在`Symbol.asyncIterator`上，如果定义该属性就表示对其进行异步遍历。
 ```js
 [].__proto__[Symbol.asyncIterator]=async function*() {
   for(let value of this){
@@ -169,7 +169,7 @@ asyncIterator
     console.log(iterResult3); // { value: undefined, done: true }
   });
 ```
-异步遍历器的next()可以连续调用，不必等待上一步Promise对象resolve后调用。这种情况下，next()方法会累积，自动按照每一步的顺序运行下去
+异步遍历器的`next()`可以连续调用，不必等待上一步Promise对象`resolve`后调用。这种情况下，`next()`方法会累积，自动按照每一步的顺序运行下去
 
 ### for await...of
 用于遍历异步Iterator接口
@@ -193,7 +193,7 @@ var asyncIterable = {
   }
 })();// 0 1 2
 ```
-每当Promise变更为resolve状态时，就会把值传入for...of循环
+每当Promise变更为`resolve`状态时，就会把值传入`for...of`循环
 
 ## 异步Generator函数
 语法上,异步 Generator 函数就是async函数与 Generator 函数的结合
@@ -202,4 +202,4 @@ async function* gen(){
   yiled 'done'
 }
 ```
-异步 Generator 函数内部，能够同时使用await和yield命令。可以这样理解，await命令用于将外部操作产生的值输入函数内部，yield命令用于将函数内部的值输出。
+异步 Generator 函数内部，能够同时使用`await`和`yield`命令。可以这样理解，await命令用于将外部操作产生的值输入函数内部，`yield`命令用于将函数内部的值输出。
